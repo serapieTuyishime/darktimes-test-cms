@@ -1,9 +1,9 @@
-import {defineConfig, isDev} from 'sanity'
-import {visionTool} from '@sanity/vision'
-import {structureTool} from 'sanity/structure'
-import {schemaTypes} from './schemaTypes'
-import {getStartedPlugin} from './plugins/sanity-plugin-tutorial'
-
+import { defineConfig, isDev } from 'sanity'
+import { visionTool } from '@sanity/vision'
+import { structureTool } from 'sanity/structure'
+import { schemaTypes } from './schemaTypes'
+import { getStartedPlugin } from './plugins/sanity-plugin-tutorial'
+import { vercelDeployTool } from "sanity-plugin-vercel-deploy"
 const devOnlyPlugins = [getStartedPlugin()]
 
 export default defineConfig({
@@ -13,7 +13,7 @@ export default defineConfig({
   projectId: 'equ70bdz',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool(), ...(isDev ? devOnlyPlugins : [])],
+  plugins: [vercelDeployTool(), structureTool(), visionTool(), ...(isDev ? devOnlyPlugins : [])],
 
   schema: {
     types: schemaTypes,
